@@ -92,5 +92,28 @@ exports.deletePost = (req, res, next) => {
 
 //add comment to post
 exports.postAddComment = (req,res,next) =>{
-  console.log("postAddComment")
+  
+  let postId = req.post._id; 
+
+  let comments = {
+    user: req.profile._id,
+    comment: req.body.comment
+  }
+
+  Post.findOneAndUpdate(
+    { _id: postId },
+    { $set: {comments: comments}  },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        return res.status(400).json({
+          error: err,
+        });
+      }
+      req.post = result;
+      return res.json({
+        message: "Comment Added Successfully",
+      });
+    }
+  );
 }

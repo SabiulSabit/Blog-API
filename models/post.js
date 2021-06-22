@@ -5,8 +5,8 @@ const { ObjectId } = mongoose.Schema;
 const UserSchema = new mongoose.Schema(
     {
       user: { type: ObjectId, ref: "User" },
-      name: String,
-      email: String,
+      // name: String,
+      // email: String,
       comment: String
     },
     { timestamps: true }
