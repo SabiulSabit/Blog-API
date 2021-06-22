@@ -24,6 +24,11 @@ router
   .delete(authController.requireSignin, authController.isAuth, authController.isAuthor, postController.deletePost);  
 
 
+//add comment to post
+router.route('/comment/:postId/:userId')
+   .post(authController.requireSignin, authController.isAuth, postController.postAddComment);    
+
+
 //get user info from user id
 router.param("userId", userController.userByID);
 

@@ -88,3 +88,9 @@ exports.deletePost = (req, res, next) => {
     });
   });
 };
+
+
+//add comment to post
+exports.postAddComment = (req,res,next) =>{
+  console.log("postAddComment")
+}
