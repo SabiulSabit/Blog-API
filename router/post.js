@@ -11,7 +11,17 @@ router
   .route("/post/create/:userId")
   .post(authController.requireSignin, authController.isAuth, postController.postCreatPost);
 
+
+//delete post
+router
+  .route("/post/delete/:postId/:userId")
+  .delete(authController.requireSignin, authController.isAuth, authController.isAuthor, postController.deletePost);  
+
+
 //get user info from user id
 router.param("userId", userController.userByID);
+
+//get post info from post id
+router.param("postId", postController.postByID);
 
 module.exports = router;
