@@ -94,15 +94,24 @@ exports.deletePost = (req, res, next) => {
 exports.postAddComment = (req,res,next) =>{
   
   let postId = req.post._id; 
+  let userId = req.profile._id;
+  let comment = req.body.comment;
+
+    //valid comment
+    if (comment.length <= 0 ) {
+      return res.status(400).json({
+        error: "Comment is Required",
+      });
+    }
 
   let comments = {
-    user: req.profile._id,
-    comment: req.body.comment
+    user: userId,
+    comment: comment
   }
 
   Post.findOneAndUpdate(
     { _id: postId },
-    { $set: {comments: comments}  },
+    { $push: {comments: comments}  },
     { new: true },
     (err, result) => {
       if (err) {
