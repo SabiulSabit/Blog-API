@@ -12,6 +12,7 @@ const app = express();
 
 // import all router
 const authRouter = require('./router/auth')
+const postRouter = require('./router/post')
 
 
 //middleware
@@ -33,6 +34,7 @@ mongoose.connect(process.env.DATABASE, {
 
 //routing file
 app.use('/api', authRouter);
+app.use('/api', postRouter);
 
 
 
