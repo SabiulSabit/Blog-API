@@ -12,6 +12,12 @@ router
   .post(authController.requireSignin, authController.isAuth, postController.postCreatPost);
 
 
+//update post
+router
+  .route("/post/update/:postId/:userId")
+  .put(authController.requireSignin, authController.isAuth, authController.isAuthor, postController.updatePost);    
+
+
 //delete post
 router
   .route("/post/delete/:postId/:userId")
