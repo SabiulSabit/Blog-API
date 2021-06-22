@@ -19,12 +19,16 @@ const postSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      maxlenght: 32,
+      maxlenght: 100,
     },
     content: {
       type: String,
       required: true,
       maxlenght: 5000,
+    },
+    tags: {
+      type: Array,
+      default: []
     },
     author: { type: ObjectId, ref: "User" },
     comments: [UserSchema],
