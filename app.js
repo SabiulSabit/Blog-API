@@ -10,9 +10,11 @@ require('dotenv').config();
 //app
 const app = express();
 
+// import all router
+const authRouter = require('./router/auth')
+
 
 //middleware
-
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.use(cookieParser());
@@ -27,6 +29,12 @@ mongoose.connect(process.env.DATABASE, {
 }).then( () =>{ 
     console.log("Connected To Database");
 } )
+
+
+//routing file
+app.use('/api', authRouter);
+
+
 
 
 //run the server
