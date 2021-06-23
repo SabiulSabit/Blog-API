@@ -2,7 +2,7 @@
 
 ## .env file
  
- Creat a .env filr and add Environment Variable
+ Creat a .env file and add Environment Variable
  
  ```env
   PORT=YOUR PORT (Default port is 8000)
